@@ -1,29 +1,19 @@
 #include <iostream>
 #include <chrono>
 
-using namespace boost::multiprecision;
-
-void fib(cpp_int last, cpp_int current){
-    cpp_int next;
-    for(int i = 0; i < 10000; i++){
-        next = last + current;
-        std::cout << next << " ";
-        
-        last = current;
-        current = next;
-    }
+int fib(int n){
+    if (n <=1) return n;
+    return fib(n-1) + fib(n-2);
 }
-
 
 int main() {
 
-    const cpp_int start0 = 0;
-    const cpp_int start1 = 1;
-    
     //start timing
     auto start = std::chrono::high_resolution_clock::now();
 
-    fib(0 , 1);
+    for(int i = 0; i < 10000; i++){
+        std::cout << fib(i) << " ";
+    }
     
 
     //end timing
